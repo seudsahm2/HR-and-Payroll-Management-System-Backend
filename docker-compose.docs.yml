@@ -1,0 +1,16 @@
+services:
+  docs:
+    image: hr_and_payroll_management_system_backend_local_docs
+    container_name: hr_and_payroll_management_system_backend_local_docs
+    build:
+      context: .
+      dockerfile: ./compose/local/docs/Dockerfile
+    env_file:
+      - ./.envs/.local/.django
+    volumes:
+      - ./docs:/docs:z
+      - ./config:/app/config:z
+      - ./hr_and_payroll_management_system_backend:/app/hr_and_payroll_management_system_backend:z
+    ports:
+      - '9000:9000'
+    command: /start-docs
